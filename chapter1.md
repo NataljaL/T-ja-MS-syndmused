@@ -159,5 +159,5 @@ Omega <- rolldie(4, nsides=6) #kõikvõimalike katsetulemuste hulk kolme täring
 
 msg_bad <- "Kahjuks pole õige vastus."
 msg_success <- "Super! Said asjast õigesti aru!"
-test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success,  msg_bad))
+test_mc(correct = 2, feedback_msgs = c(msg_bad,  msg_success, msg_bad, msg_bad, msg_bad))
 ```
