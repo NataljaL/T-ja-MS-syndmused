@@ -42,7 +42,8 @@ Omega <- rolldie(3) #kõikvõimalike katsetulemuste hulk kolme täringu veeretam
 
 *** =sample_code
 ```{r}
-Omega
+Omega #kogu tabel
+colnames(Omega) #veergude nimed
 
 # Näide 1. Alamhulga võtmine ridade numbrite järgi:
 A <- Omega[1:3,] #1. kuni 3. rida kaasaarvatud
@@ -75,7 +76,8 @@ E2
 
 *** =solution
 ```{r}
-Omega
+Omega #kogu tabel
+colnames(Omega) #veergude nimed
 
 # Näide 1. Alamhulga võtmine ridade numbrite järgi:
 A <- Omega[1:3,] #1. kuni 3. rida kaasaarvatud
