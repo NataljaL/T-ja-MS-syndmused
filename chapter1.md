@@ -37,11 +37,11 @@ rolldie <- function (times, nsides = 6, makespace = FALSE){
     return(res)
 }
 
+Omega <- rolldie(3) #kõikvõimalike katsetulemuste hulk kolme täringu veeretamisel
 ```
 
 *** =sample_code
 ```{r}
-Omega <- rolldie(3) #kõikvõimalike katsetulemuste hulk kolme täringu veeretamisel
 Omega
 
 # Näide 1. Alamhulga võtmine ridade numbrite järgi:
@@ -75,7 +75,6 @@ E2
 
 *** =solution
 ```{r}
-Omega <- rolldie(3) #kõikvõimalike katsetulemuste hulk kolme täringu veeretamisel
 Omega
 
 # Näide 1. Alamhulga võtmine ridade numbrite järgi:
