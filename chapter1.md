@@ -260,5 +260,101 @@ test_object("Z1", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsioo
 test_object("Z2", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsiooni `setdiff` ja esimeseks argumendiks panid `B`?")
 test_object("B_taiend", undefined_msg = NULL, incorrect_msg = "Täiendi saamiseks kasuta funktsiooni `setdiff` koos esimese aergumendiga `Omega`")
 
-success_msg("Sa said sellega hakkama! Super!")
+success_msg("Sa said sellega hakkama! Suurepärane!")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:c5c1237bb4
+## Arvu ära arvamine
+Saadud teadmisi nüüd saad rakendada järgmise ülesande juures. 
+
+Kristjan mõtles ühe kolmekohalise arvu. Kas arvad ära? Oma mõeldud arvu kohta ütleb Kristjan nii:
+
+1. see on paarisarv
+2. arv ei jagu 4-ga, kuid jagub kas 91 või 90-ga
+3. numbrite summa selles arvus on suurem kui 11, kuid väiksem või võrdne 15-ga
+
+Arvame ära Kristjani mõeldud arvu sündmuste ja tehete abil!
+
+*** =instructions
+* Elementaarsündmuste hulk $\Omega$ koosneb kõikidest kolmekohalistest arvudest, `R`-is `100:999.` Omista neid muutujale `Omega`.
+* Tingimusi, mida mõeldud arv rahuldab, sisestame sündmustena. Läheb vaja sajaliste (`X100`), kümneliste (`X10`) ja üheliste (`X1`) numbreid. Uuri, kuidas on need defineeritud.
+* Olgu sündmus $A$ paarisarv. Paarisarvu saame, kui arvu jagamisel 2-ga on jäägiks 0. Vastav sündmus on `R`-is juba defineeritud. Kirjuta analoogiliselt sündmused `B1`, `B2` ja `B3`, mis on defineeritud järgmiselt:
+    - `B1`: arv ei jagu 4-ga;
+    - `B2`: arv jagub 90-ga;
+    - `B3`: arv jagub 91-ga.
+* Kristjani 2. väide on sel juhul sündmuste tehete kaudu: $B = B1 \cap (B2\cup B3)$. Defineeri see sündmus R-is, kasutades funktsiooni `union()` ja `intersect()`. 
+* Olgu sündmus `C1`: numbrite summa on suurem kui 11. See sündmus on juba defineeritud. Kirjuta analoogiline käsk sündmuse `C2` jaoks: numbrite summa on väiksem või võrdne 15-ga.
+* Olgu sündmus $C = C1\cap C2$. Defineeri see `R`-is.
+* Kristjani mõeldud arvu saab esitada nüüd kui $Arv = (A \cap B) \cap C$. Täienda muutuja `Arv` funktsioonidega ning saad Kristjani arvu kätte!
+
+*** =hint
+* Sündmuste tehete defineerimiseks on abiks eelmise harjutuses kasutatud käskude tabel.
+* Sümbol `!=` vastab väljendile "ei võrdu". 
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+Omega <- _______             # elementaarsündmuste hulk
+X100 <- Omega%/%100          # sajalised
+X10 <- (Omega-X100*100)%/%10 # kümnelised
+X1 <- Omega-X100*100-X10*10  # ühelised
+
+A <- subset(Omega, Omega %% 2 == 0)    # paarisarv
+
+B1 <- ______________________________   # arv ei jagu 4-ga 
+B2 <- ______________________________   # arv jagub 90-ga
+B3 <- ______________________________   # arv jagub 91-ga
+B <- ________(B1, ______(B2, B3))
+
+C1 <- subset(Omega, X100+X10+X1 > 11)  # numbrite summa > 11
+C2 <- ______________________________   # numbrite summa <= 15
+C <- _____________________
+
+Arv <- ____________(____________(A,B),  C)
+Arv
+
+```
+
+*** =solution
+```{r}
+Omega <- 100:999             # elementaarsündmuste hulk
+X100 <- Omega%/%100          # sajalised
+X10 <- (Omega-X100*100)%/%10 # kümnelised
+X1 <- Omega-X100*100-X10*10  # ühelised
+
+A <- subset(Omega, Omega %% 2 == 0)    # paarisarv
+
+B1 <- subset(Omega, Omega %% 4 != 0)   # arv ei jagu 4-ga 
+B2 <- subset(Omega, Omega %% 90 == 0)  # arv jagub 90-ga
+B3 <- subset(Omega, Omega %% 91 == 0)  # arv jagub 91-ga
+B <- intersect(B1, union(B2, B3))
+
+C1 <- subset(Omega, X100+X10+X1 > 11)  # numbrite summa > 11
+C2 <- subset(Omega, X100+X10+X1 <= 15) # numbrite summa <= 15
+C <- intersect(C1, C2)
+
+Arv <- intersect(intersect(A,B),  C)
+Arv
+
+```
+
+*** =sct
+```{r}
+test_object("Omega", undefined_msg = NULL, incorrect_msg = "`Onmega` defineerimisel kasuta näiteks `100:999`")
+test_object("B1", undefined_msg = NULL, incorrect_msg = "Defineeri `B1` sarnaselt muutujaga `A`! Kasuta `!=` defineerimaks seda, et arv ei jagu 4-ga!")
+test_object("B2", undefined_msg = NULL, incorrect_msg = "Defineeri `B2` analoogiliselt muutujaga `A`! Kasuta `90` `2`-asemel.")
+test_object("B3", undefined_msg = NULL, incorrect_msg = "Defineeri `B3` analoogiliselt muutujaga `A`! Kasuta `91` `2`-asemel.")
+
+test_object("B", undefined_msg = NULL, incorrect_msg = "Kas kasutasid käsu `intersect` ühe argumendina funktsioon `union(B2, B3)`?")
+
+test_object("C2", undefined_msg = NULL, incorrect_msg = "Defineeri `C2` analoogiliselt muutujaga `C1`! Kasuta märki `<=`.")
+test_object("C", undefined_msg = NULL, incorrect_msg = "Kas kasutasid käsku `intersect(C1, C2)`?")
+
+test_object("Arv", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsiooni `intersect`, mille üheks argumendiks on samuti funktsioon `intersect`?")
+
+success_msg("Suurepärane! R on igal pool abiks!")
 ```
