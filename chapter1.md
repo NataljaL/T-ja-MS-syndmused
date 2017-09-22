@@ -118,7 +118,7 @@ success_msg("Lahe! Suundu järgmise harjutuse juurde!")
 
 Olgu katseks nelja 6-tahulise täringu veeretamine. Huvipakkuvaks sündmuseks $A$ on kõik sellised realisatsioonid, kus silmade summa jagub 20-ga. Millega võrdub sündmuse *A* elementide arv? 
 
-`Omega` on juba defineeritud. Uuri, millest see koosneb. Sündmuse $A$ defineerimist harjutasid eelmises ülesandes. Kindlasti on abiks tehe `a %% b`, mis leiab jäägi arvu `a` jagamisel arvuga `b`.  
+`Omega` on juba defineeritud. Uuri, millest see koosneb. Sündmuse $A$ defineerimist harjutasid eelmises ülesandes. Kindlasti on abiks tehe `a %% b`, mis leiab jäägi arvu `a` jagamisel arvuga `b` ja käsk `nrow(A)`, mille abil saab leida tabeli `A` ridade arvu. 
 
 Harjuta jugelt aknas `R Console`!
 
