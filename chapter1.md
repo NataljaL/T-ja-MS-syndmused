@@ -110,3 +110,52 @@ E2
 ```{r}
 success_msg("Lahe! Suundu järgmise harjutuse juurde!")
 ```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:b60b137d4b
+## Ülesanne: neli täringut
+
+Olgu katseks nelja 6-tahulise täringu veeretamine. Huvipakkuvaks sündmuseks $A$ on kõik sellised realisatsioonid, kus silmade summa jagub 20-ga. Millega võrdub $\mid A\mid$ ehk sündmuse $A$ elementaarsündmuste arv? 
+
+`Omega` on juba defineeritud. Uuri, millest see koosneb. Sündmuse $A$ defineerimist harjutasid eelmises ülesandes. Kindlasti on abiks tehe `a %% b`, mis leiab jäägi arvu `a` jagamisel arvuga `b`.  
+
+Harjuta jugelt aknas `R Console`!
+
+*** =instructions
+
+* 4
+* 35
+* 168
+* 1292
+* minu vastust pole
+
+*** =hint
+Sündmuse $A$ defineerimiseks sobib näiteks järgmine käsk: 
+
+`A <- subset(Omega, (X1+X2+X3+X4) %% 20 == 0)`.
+
+*** =pre_exercise_code
+```{r}
+rolldie <- function (times, nsides = 6, makespace = FALSE){
+    temp = list()
+    for (i in 1:times) {
+        temp[[i]] <- 1:nsides
+    }
+    res <- expand.grid(temp, KEEP.OUT.ATTRS = FALSE)
+    names(res) <- c(paste(rep("X", times), 1:times, sep = ""))
+    if (makespace) 
+        res$probs <- rep(1, nsides^times)/nsides^times
+    return(res)
+}
+
+Omega <- rolldie(4, nsides=6) #kõikvõimalike katsetulemuste hulk kolme täringu veeretamisel
+
+```
+
+*** =sct
+```{r}
+# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+
+msg_bad <- "Kahjuks pole õige vastus."
+msg_success <- "Super! Said asjast õigesti aru!"
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success,  msg_bad))
+```
