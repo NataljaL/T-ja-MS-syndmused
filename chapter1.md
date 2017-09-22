@@ -179,11 +179,12 @@ Täiendi $\bar A$ saamiseks saab kasutada `setdiff(Omega, A)`, kus `Omega` on k�
 Koosnegu $\Omega$ 36-st kaardist, milles on neli masti ja kaardid 6, 7, 8, 9, poiss, emand, kuningas ja äss.
 Sündmus *A* on defineeritud kui kõik ärtu masti kaardid ja sündmus *B* kui kaardid numbritega 7, 8 ja 9.
 
-1. Defineerida sündmus `X`, mis on sündmuste *A* ja *B* ühend.
-2. Defineerida sündmus `Y`, mis on sündmuste *A* ja *B* ühisosa.
-3. Defineerida sündmus `Z1`, mis vastab tehtele $A\backslash B$.
-4. Defineerida sündmus `Z2`, mis vastab tehtele $B\backslash A$. Kas `Z1` ja `Z2` langevad kokku? 
-5. Defineerida sündmus `B_taiend`, mis vastab tehtele $\bar B$.
+1. Uuri, kuidas on defineeritud `Omega`, `A` ja `B`.
+2. Defineeri sündmus `X`, mis on sündmuste *A* ja *B* ühend.
+3. Defineeri sündmus `Y`, mis on sündmuste *A* ja *B* ühisosa.
+4. Defineeri sündmus `Z1`, mis vastab tehtele $A\backslash B$.
+5. Defineeri sündmus `Z2`, mis vastab tehtele $B\backslash A$. Kas `Z1` ja `Z2` langevad kokku? 
+6. Defineeri sündmus `B_taiend`, mis vastab tehtele $\bar B$.
 
 *** =hint
 Kasuta tabelis olevad funktsioonid ning argumentideks `A`, `B` või `Omega`. 
