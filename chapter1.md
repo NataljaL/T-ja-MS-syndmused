@@ -116,7 +116,7 @@ success_msg("Lahe! Suundu järgmise harjutuse juurde!")
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:b60b137d4b
 ## Ülesanne: neli täringut
 
-Olgu katseks nelja 6-tahulise täringu veeretamine. Huvipakkuvaks sündmuseks $A$ on kõik sellised realisatsioonid, kus silmade summa jagub 20-ga. Millega võrdub sündmuse $A$ elementide arv? 
+Olgu katseks nelja 6-tahulise täringu veeretamine. Huvipakkuvaks sündmuseks $A$ on kõik sellised realisatsioonid, kus silmade summa jagub 20-ga. Millega võrdub sündmuse *A* elementide arv? 
 
 `Omega` on juba defineeritud. Uuri, millest see koosneb. Sündmuse $A$ defineerimist harjutasid eelmises ülesandes. Kindlasti on abiks tehe `a %% b`, mis leiab jäägi arvu `a` jagamisel arvuga `b`.  
 
