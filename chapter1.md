@@ -161,3 +161,103 @@ msg_bad <- "Kahjuks pole õige vastus."
 msg_success <- "Super! Said asjast õigesti aru!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad,  msg_success, msg_bad, msg_bad, msg_bad))
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:7874b5a8d3
+## Sündmuste ühend, ühisosa, vahe, täiend
+
+Sündmuste tehetele vastavad käsud on:
+
+| `R`-i funktsioon    | Tehe         | Tähistus | Definitsioon                       |
+|---------------------|--------------|:--------:|------------------------------------|
+| `union(A, B)`       | Ühend        |$A \cup B$| *A* või *B* elemendid, või mõlemad     |
+| `intersect(A, B)`   | Ühisosa      |$A \cap B$| *A* ja *B* ühised elemendid           |
+| `setdiff(A, B)`     | Vahe         |$A\backslash B$    | elemendid *A*-st, mis ei kuulu *B*-sse   |
+
+Täiendi $\bar A$ saamiseks saab kasutada `setdiff(Omega, A)`, kus `Omega` on kõikide elementaarsündmuste hulk.
+
+*** =instructions
+Koosnegu $\Omega$ 36-st kaardist, milles on neli masti ja kaardid 6, 7, 8, 9, poiss, emand, kuningas ja äss.
+Sündmus *A* on defineeritud kui kõik ärtu masti kaardid ja sündmus *B* kui kaardid numbritega 7, 8 ja 9.
+
+1. Defineerida sündmus `X`, mis on sündmuste *A* ja *B* ühend.
+2. Defineerida sündmus `Y`, mis on sündmuste *A* ja *B* ühisosa.
+3. Defineerida sündmus `Z1`, mis vastab tehtele $A\backslash B$.
+4. Defineerida sündmus `Z2`, mis vastab tehtele $B\backslash A$. Kas `Z1` ja `Z2` langevad kokku? 
+5. Defineerida sündmus `B_taiend`, mis vastab tehtele $\bar B$.
+
+*** =hint
+Kasuta tabelis olevad funktsioonid ning argumentideks `A`, `B` või `Omega`. 
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+#Omega loomine
+vaartused <- c( 6, 7, 8, 9, 10, "J", "Q", "K", "Ä")
+mastid <- c("poti", "ärtu", "risti", "ruutu")
+Omega <- expand.grid(vaartused, mastid)
+colnames(Omega) = c("Vaartus", "Mast") # täpitähed nimedes võivad tekitada veateateid
+Omega
+
+#Sündmuste A ja B defineerimine
+A <- subset(Omega, Mast == "ärtu")
+B <- subset(Omega, Vaartus %in% 7:9)
+
+# Ülesanne 1. Sündmuste A ja B ühend:
+X <- ___________
+
+# Ülesanne 2. Sündmuste A ja B ühisosa:
+Y <- ___________
+
+# Ülesanne 3. Sündmsuste A ja B vahe:
+Z1 <- ___________ 
+
+# Ülesanne 4. Sündmsute B ja A vahe:
+Z2 <- ___________ 
+
+# Ülesanne 5. Sündmuse B täiend:
+B_taiend <- ___________ 
+```
+
+*** =solution
+```{r}
+#Omega loomine
+vaartused <- c( 6, 7, 8, 9, 10, "J", "Q", "K", "Ä")
+mastid <- c("poti", "ärtu", "risti", "ruutu")
+Omega <- expand.grid(vaartused, mastid)
+colnames(Omega) = c("Vaartus", "Mast") # täpitähed nimedes võivad tekitada veateateid
+Omega
+
+#Sündmuste A ja B defineerimine
+A <- subset(Omega, Mast == "ärtu")
+B <- subset(Omega, Vaartus %in% 7:9)
+
+# Ülesanne 1. Sündmuste A ja B ühend:
+X <- union(A, B)
+
+# Ülesanne 2. Sündmuste A ja B ühisosa:
+Y <- intersect(A, B)
+
+# Ülesanne 3. Sündmsuste A ja B vahe:
+Z1 <- setdiff(A, B) 
+
+# Ülesanne 4. Sündmsute B ja A vahe:
+Z2 <- setdiff(B, A) 
+
+# Ülesanne 5. Sündmuse B täiend:
+B_taiend <- setdiff(Omega, B) 
+```
+
+*** =sct
+```{r}
+test_object("X", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsiooni `union` ja argumentideks `A` ning `B`?")
+test_object("Y", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsiooni `intersect` ja argumentideks `A` ning `B`?")
+test_object("Z1", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsiooni `setdiff` ja esimeseks argumendiks panid `A`?")
+test_object("Z2", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsiooni `setdiff` ja esimeseks argumendiks panid `B`?")
+test_object("B_taiend", undefined_msg = NULL, incorrect_msg = "Täiendi saamiseks kasuta funktsiooni `setdiff` koos esimese aergumendiga `Omega`")
+
+success_msg("Sa said sellega hakkama! Super!")
+```
