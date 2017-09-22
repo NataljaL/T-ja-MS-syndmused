@@ -25,7 +25,17 @@ Kas vajutasid nuppu `Submit Answer`? Antud ülesande eesmärk on demonstreerida 
 
 *** =pre_exercise_code
 ```{r}
-
+rolldie <- function (times, nsides = 6, makespace = FALSE){
+    temp = list()
+    for (i in 1:times) {
+        temp[[i]] <- 1:nsides
+    }
+    res <- expand.grid(temp, KEEP.OUT.ATTRS = FALSE)
+    names(res) <- c(paste(rep("X", times), 1:times, sep = ""))
+    if (makespace) 
+        res$probs <- rep(1, nsides^times)/nsides^times
+    return(res)
+}
 
 ```
 
