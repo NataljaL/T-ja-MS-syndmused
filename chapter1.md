@@ -358,3 +358,196 @@ test_object("Arv", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsio
 
 success_msg("Suurepärane! R on igal pool abiks!")
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:201fd41f0e
+## Klassikaline tõenäosus (1)
+
+Tuletame meelde, et sündmuse $A$ klassikaline tõenäosus on defineeritud järgmise suhte abil:
+$$P(A)=\frac{|A|}{|{\Omega}|}.$$
+
+**Näide.** Kahe täringu veeretamine. Olgu sündmus $A=$'silmade arvu summa on väiksem kui 5'. Leida sündmuse *A* tõenäosus.
+
+Teame, et elementaarsündmuste ruum $\Omega$ koosneb paaridest (1,1), (1,2) kuni (6,6) , ehk kokku 36 elementaarsündmust. 
+
+Sündmusele *A* vastavad järgmised paarid: (1,1), (1,2),(1,3),(2,1),(2,2) ja (3,1), ehk kokku 6 sobivat elementaarsündmust. Vastuseks saame 
+$$P(A)=6/36=1/6.$$ 
+
+`R`-is sündmuse defineerimine on analoogiline alamhulga valimisega, mis vastab teatud tingimusele. Antud näidet saaks `R`-is lahendada järgmiselt.
+
+*** =instructions
+
+* Uuri, kuidas on defineeritud elementaarsündmuste hulk `Omega`.
+* Uuri, kuidas on kasutatud funktsiooni `subset()` sündmuse *A* defineerimiseks.
+* Sündmuse *A* tõenäosus on leitud otse valemi järgi.
+* **Ülesanne.** Defineeri sündmus *B*, mis vastab võrdsele silmade arvule mõlemal täringul ning leia selle tõenäosus.
+
+*** =hint
+Võrdne arv silmi mõlemal täringul on `R`-is tingimus `Taring1 == Taring2`. Ülejäänud on analoogiline näitega.
+
+*** =pre_exercise_code
+```{r}
+taring <- 1:6                       # elementaarsündmuste ruum 
+p <- rep(1/6, times=6)              # tõenäosuste vektor
+taring.ruum <- cbind(taring, p) 
+```
+
+*** =sample_code
+```{r}
+# Kahe täringu veeretamisele vastav elementaarsündmuste hulk Omega:
+Omega <- expand.grid(1:6, 1:6)
+colnames(Omega) <- c("Taring1", "Taring2")
+head(Omega) # 6 esimest rida tabelist Omega
+
+# Sündmus A
+A <- subset(Omega, Taring1 + Taring2 < 5)
+A 
+
+# Sündmuse A tõenäosus:
+P.A.valem <- nrow(A)/nrow(Omega)
+P.A.valem
+
+#ÜLESANNE:
+B <- ___________________
+P.B <- _________________
+P.B
+
+```
+
+*** =solution
+```{r}
+# Kahe täringu veeretamisele vastav elementaarsündmuste hulk Omega:
+Omega <- expand.grid(1:6, 1:6)
+colnames(Omega) <- c("Taring1", "Taring2")
+head(Omega) # 6 esimest rida tabelist Omega
+
+# Sündmus A
+A <- subset(Omega, Taring1 + Taring2 < 5)
+A 
+
+# Sündmuse A tõenäosus:
+P.A.valem <- nrow(A)/nrow(Omega)
+P.A.valem 
+
+#ÜLESANNE:
+B <- subset(Omega, Taring1 == Taring2)
+P.B <- nrow(B)/nrow(Omega)
+P.B
+
+```
+
+*** =sct
+```{r}
+test_object("B", undefined_msg = NULL, incorrect_msg = "Valesti defineeritud sündmus `B`! Kasuta funktsiooni `subset` ja tingimust `Taring1 == Taring2`!")
+test_student_typed("P.B <- nrow(B)/nrow(Omega)", not_typed_msg =  "Viga tõenäosuse P(B) leidmisel! Kas kasutasid `nrow(B)/nrow(Omega)`?")
+
+success_msg("Suurepärane! Suundu järgmise harjutuse juurde!")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:ebb7291a12
+## Klassikaline tõenäosus (2)
+
+Väikeste näidete korral (nagu oli kahe täringu viske korral) ei vaja me sageli arvutit tõenäosuste leidmiseks. Elus võib aga ette tulla olukordi, kus teisiti on raske hakkama saada. 
+
+Siin on veel üks näide, millele järgneb ülesanne.
+
+**Näide.** Miku rahakotis on 9 ühe-eurost münti ja 7 kahe-eurost, ülejäänud mündid on sendid: 6 kahekümne-sendist ja 3 viiekümne-sendist.
+
+Kommipakk maksab poes 2 EUR ja 60 senti. Miku rahakott on väike ja ebamugav ning ta võtab sealt kaks münti pimesi. Mis on tõenäosus, et saadud rahaga saab ta kommipaki eest maksta (st et müntide summa on vähemalt 2 EUR ja 60 senti)? 
+
+Lahendame `R`-is.
+
+*** =instructions
+* Elementaarsündmuste hulk `Omega` on defineeritud, see vastab kahe mündi võtmisele tagasipanekuta 25-st mündist. Kõik mündid on selles hulgas eristatavad (ka sama väärtusega).
+* Olgu *A* sündmus, et kahe mündi summa on vähemalt 2,60. Vaata, kuidas on see defineeritud.
+* Sündmuse *A* tõenäosus on seejärel arvutatud klassikalise valemi järgi. Uuri muutujat `P_A`.
+* **Ülesanne.** Eelmises ülesandes leida tõenäosus (`P_B`), et juhuslikult võetud kaks münti on sama väärtusega (`B`).
+
+*** =hint
+Tuleta meelde, et võrdusmärgi sisestamiseks tingimuse ritta tuleks kasutada topelt võrdusmärki `==`, näiteks `A == B`.
+
+*** =pre_exercise_code
+```{r}
+source_github <- function(user = "cran", package = "prob") {
+  
+  library(httr)
+  package_source <- paste0(user, "/",package, "/")
+  url <- paste0("https://api.github.com/repos","/", package_source, "git/trees/master?recursive=1")
+  req <- GET(url)
+  stop_for_status(req)
+  filelist <- unlist(lapply(content(req)$tree, "[", "path"), use.names = F)
+  R_files <- filelist[grep("R/",filelist)]
+  
+  for(file in R_files) {
+    url <- paste0("https://raw.githubusercontent.com/", package_source, "master/", file)
+    source(url)
+  }
+}
+save(file = "source_github.Rda", source_github)
+
+source_github()
+
+source_github <- function(user = "cran", package = "combinat") {
+  
+  library(httr)
+  package_source <- paste0(user, "/",package, "/")
+  url <- paste0("https://api.github.com/repos","/", package_source, "git/trees/master?recursive=1")
+  req <- GET(url)
+  stop_for_status(req)
+  filelist <- unlist(lapply(content(req)$tree, "[", "path"), use.names = F)
+  R_files <- filelist[grep("R/",filelist)]
+  
+  for(file in R_files) {
+    url <- paste0("https://raw.githubusercontent.com/", package_source, "master/", file)
+    source(url)
+  }
+}
+save(file = "source_github.Rda", source_github)
+
+source_github()
+
+```
+
+*** =sample_code
+```{r}
+# Elementaarsündmuste hulk koos tõenäosustega:
+Myndid <- rep(c(1,2,0.2,0.5), c(9,7,6,3)) #Miku rahakott
+Omega <- urnsamples(Myndid, size = 2, replace = FALSE, ordered = TRUE) # kombinatsioonid 25-st 2 kaupa, kus järjestus on oluline
+colnames(Omega)=c("Mynt1", "Mynt2")
+
+#Sündmus A:
+A <- subset(Omega, Mynt1+Mynt2>=2.6)
+
+# Tõenäosus, et juhuslikult võetud 2 mündi summa on vähemalt 2,60.
+P_A <- nrow(A)/nrow(Omega)
+
+# ÜLESANNE. Samast rahakotist juhuslikult võetud kaks münti on sama väärtusega.
+B <- 
+P_B <- 
+P_B
+```
+
+*** =solution
+```{r}
+# Elementaarsündmuste hulk koos tõenäosustega:
+Myndid <- rep(c(1,2,0.2,0.5), c(9,7,6,3)) #Miku rahakott
+Omega <- urnsamples(Myndid, size = 2, replace = FALSE, ordered = TRUE) # kombinatsioonid 25-st 2 kaupa, kus järjestus on oluline
+colnames(Omega)=c("Mynt1", "Mynt2")
+
+#Sündmus A:
+A <- subset(Omega, Mynt1+Mynt2>=2.6)
+
+# Tõenäosus, et juhuslikult võetud 2 mündi summa on vähemalt 2,60.
+P_A <- nrow(A)/nrow(Omega)
+
+# ÜLESANNE. Samast rahakotist juhuslikult võetud kaks münti on sama väärtusega.
+B <- subset(Omega, Mynt1==Mynt2)
+P_B <- nrow(B)/nrow(Omega)
+P_B
+```
+
+*** =sct
+```{r}
+test_object("B", undefined_msg = NULL, incorrect_msg = "Muutuja B on defineeritud valesti. Kas kasutasid tingimust `Mynt1==Mynt2`?")
+test_object("P_B", undefined_msg = NULL, incorrect_msg = "Tõenäosuse P_B väärtus pole õige.")
+
+success_msg("Lahe! Oskad nii hästi `R`-i!")
