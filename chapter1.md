@@ -707,7 +707,7 @@ A <- paste(A$X1, A$X2)
 B <- paste(B$X1, B$X2)
 
 # Tinglik tõenäosus valemi järgi:
-tn1 <- length(________)/lenght(B) # P(A|B)
+tn1 <- length(________)/length(B) # P(A|B)
 tn2 <-  _______________________   # P(B|A)
 ```
 
@@ -722,8 +722,8 @@ A <- paste(A$X1, A$X2)
 B <- paste(B$X1, B$X2)
 
 # Tinglik tõenäosus valemi järgi:
-tn1 <- length(intersect(A,B))/lenght(B)  # P(A|B)
-tn2 <- length(intersect(A,B))/lenght(A)  # P(B|A)
+tn1 <- length(intersect(A,B))/length(B)  # P(A|B)
+tn2 <- length(intersect(A,B))/length(A)  # P(B|A)
  
 ```
 
