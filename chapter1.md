@@ -573,7 +573,7 @@ Sündmus *A* oli defineeritud kui kõik ärtu masti kaardid ja sündmus *B* kui 
 * **Ülesanne:** leida eelmises ülesandes, et tõmmatud kaart on kas musta masti (sündmus `C`) või numbritega 6, 7 (sündmus `D`). Lõplikku vastust omista muutujale `yl.tn`.
 
 *** =hint
-Ülesande lahendamiseks defineeri esmalt uued vajalikud sündmused ning seejärel kasuta näiteks funktsiooni `Prob(union(___ ,____))`.
+Ülesande lahendamiseks defineeri esmalt uued vajalikud sündmused ning seejärel kasuta näiteks funktsiooni `length(union(___ ,____))/36`.
 
 *** =pre_exercise_code
 ```{r}
@@ -641,3 +641,98 @@ yl.tn <- length(union(C,D))/36
 test_object("yl.tn", undefined_msg = NULL, incorrect_msg = "Vatus pole õige. Proovi veelkord!")
 success_msg("Suurepärane! Kasuta `R`-i ka edaspidi oma töös :) ")
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:3c0bf3ee30
+## Tinglik tõenäosus
+Sündmuse $A$ tõenäosust tingimusel, et sündmus $B$ on toimunud nimetatakse **tinglikukus tõenäosuseks** ja leitakse järgmiselt: 
+
+$$P(A|B)=\frac{P(A\cap B)}{P(B)},\mbox{ kus } P(B)>0.$$
+
+**Näide.** Veeretatakse kahte täringut korraga. Kõikide elementaarsündmuste hulk on paarid $\Omega=\{(1,1), (1,2),...,(6,6)\}$. 
+
+Olgu sündmus $A=$'võrdne silmade arv mõlemal täringul' ja $B=$'silmade arvude summa on vähemalt 8'. 
+
+Leida $P(A|B)$ (tõenäosus saada võrdne arv silmi tingmusel, et silmade arvude summa on vähemalt 8) ja $P(B|A)$ (tõenäosus saada summaks vähemalt 8 tingimusel, et mõlemal täringul on sama arv silmi). 
+
+Joonisel on ristiga märgitud sündmusele $A$ vastavad tulemused ja ringiga need, mis vastavad sündmusele $B$. Selle abil on lihtne veenduda, et 
+
+$$P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{3/36}{15/36}= \frac{1}{5} \mbox{ ja } P(B|A)=\frac{3/36}{6/36}=\frac{1}{2}.$$
+
+Lahendame ka `R`- i abil.
+
+*** =instructions
+
+* Hulk $\Omega$, mis vastab kahe täringu veeretamisele, on defineeritud muutuja `Omega` abil. Uuri, millest see koosneb!
+* Sündmus `A` on defineeritud. Defineeri analoogiliselt ka sündmus `B`.
+* Leida $P(A|B)$ valemi järgi täiendades vastavat käsku funktsiooniga `intersect()`.
+* Kirjuta analoogiline käsk ka sündmuse $B|A$ tõenäosuse leidmiseks. Kas `tn1` ja `tn2` langevad kokku?
+ 
+*** =hint
+* Kasuta tingimust `X1 + X2 >= 8` sündmuse `B` defineerimisel.
+* Tingliku tõenäosuse leidmisel valemi järgi lugejaks on `length(intersect(A,B))`.
+
+*** =pre_exercise_code
+```{r}
+
+#Joonis ülesande jaoks:
+plot(1:6, 1:6,bty='n',pch='',ylab='1. vise',xlab='', xaxt = 'n', 
+ylim=rev(range(c(6.5,0.5))), xlim=c(0.5,6.5))
+
+axis(3, xaxp=c(1, 6, 5))
+mtext("2. vise", 1)
+
+grid(nx =NULL, ny = NULL, col = "lightgray", lty = "dotted")
+
+points(1:6,1:6, pch=4, cex=2)
+points(2:6, rep(6,5), pch=1, cex=3)
+points(3:6, rep(5,4), pch=1, cex=3)
+points(4:6, rep(4,3), pch=1, cex=3)
+points(5:6, rep(3,2), pch=1, cex=3)
+points(6, 2, pch=1, cex=3)
+
+Omega <- expand.grid(1:6, 1:6)
+```
+
+
+*** =sample_code
+```{r}
+# Sündmuste A ja B defineerimine
+A <- subset(Omega, X1 == X2)
+B <- subset(Omega, ________) # ISE! Silmade summa on vähemalt 8
+
+# Vektorite moodustamine sündmustest A ja B:
+A <- paste(A$X1, A$X2)
+B <- paste(B$X1, B$X2)
+
+# Tinglik tõenäosus valemi järgi:
+tn1 <- length(________)/lenght(B) # P(A|B)
+tn2 <-  _______________________   # P(B|A)
+```
+
+*** =solution
+```{r}
+# Sündmuste A ja B defineerimine
+A <- subset(Omega, X1 == X2)
+B <- subset(Omega, X1+X2>=8) # ISE! Silmade summa on vähemalt 8
+
+# Vektorite moodustamine sündmustest A ja B:
+A <- paste(A$X1, A$X2)
+B <- paste(B$X1, B$X2)
+
+# Tinglik tõenäosus valemi järgi:
+tn1 <- length(intersect(A,B))/lenght(B)  # P(A|B)
+tn2 <- length(intersect(A,B))/lenght(A)  # P(B|A)
+ 
+```
+
+*** =sct
+```{r}
+test_object("B", undefined_msg = NULL, incorrect_msg = "Kontrolli, kas defineerisid sündmuse `B` õigesti!")
+test_object("tn1", undefined_msg = NULL, incorrect_msg = "Kontrolli, kas lugejas on `length(intersect(A,B))`?")
+test_object("tn2", undefined_msg = NULL, incorrect_msg = "Kontrolli muutujat `tn2` veel kord. Kas nimetajas on `length(A)`?")
+success_msg("Tubli! Tinglik tõenäosus on nüüd ka selge! ")
+```
+
+
+
