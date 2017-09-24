@@ -259,7 +259,7 @@ test_object("X", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsioon
 test_object("Y", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsiooni `intersect` ja argumentideks `A` ning `B`?")
 test_object("Z1", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsiooni `setdiff` ja esimeseks argumendiks panid `A`?")
 test_object("Z2", undefined_msg = NULL, incorrect_msg = "Kas kasutasid funktsiooni `setdiff` ja esimeseks argumendiks panid `B`?")
-test_object("B_taiend", undefined_msg = NULL, incorrect_msg = "Täiendi saamiseks kasuta funktsiooni `setdiff` koos esimese aergumendiga `Omega`")
+test_object("B_taiend", undefined_msg = NULL, incorrect_msg = "Täiendi saamiseks kasuta funktsiooni `setdiff` koos esimese argumendiga `Omega` ja teisega `B`.")
 
 success_msg("Sa said sellega hakkama! Suurepärane!")
 ```
