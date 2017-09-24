@@ -174,17 +174,21 @@ Sündmuste tehetele vastavad käsud on:
 | `setdiff(A, B)`     | Vahe         |$A\backslash B$    | elemendid *A*-st, mis ei kuulu *B*-sse   |
 
 Täiendi $\bar A$ saamiseks saab kasutada `setdiff(Omega, A)`, kus `Omega` on kõikide elementaarsündmuste hulk.
+Argumendid `A`, `B` ja `Omega` peavad olema vektorid.
 
 *** =instructions
 Koosnegu $\Omega$ 36-st kaardist, milles on neli masti ja kaardid 6, 7, 8, 9, poiss, emand, kuningas ja äss.
 Sündmus *A* on defineeritud kui kõik ärtu masti kaardid ja sündmus *B* kui kaardid numbritega 7, 8 ja 9.
 
-1. Uuri, kuidas on defineeritud `Omega`, `A` ja `B`.
-2. Defineeri sündmus `X`, mis on sündmuste *A* ja *B* ühend.
-3. Defineeri sündmus `Y`, mis on sündmuste *A* ja *B* ühisosa.
-4. Defineeri sündmus `Z1`, mis vastab tehtele $A\backslash B$.
-5. Defineeri sündmus `Z2`, mis vastab tehtele $B\backslash A$. Kas `Z1` ja `Z2` langevad kokku? 
-6. Defineeri sündmus `B_taiend`, mis vastab tehtele $\bar B$.
+1. Kõigepealt defineeritakse katsetulemjuste hulk `Omega`  funktsiooni `expand.grid` abil, selle tulemuseks on tabel. Seejärel antakse veergudele nimed. Uuri!
+2. Sündmuste `A` ja `B` defineerimiseks rakendatakse käsku `subset` vastavate tingimustega ning saadakse tabelid. 
+3. Sündmuste tehete kasutamiseks luuakse tabelite baasil vektorid.
+**Ülesanne**
+4. Defineeri sündmus `X`, mis on sündmuste *A* ja *B* ühend.
+5. Defineeri sündmus `Y`, mis on sündmuste *A* ja *B* ühisosa.
+6. Defineeri sündmus `Z1`, mis vastab tehtele $A\backslash B$.
+7. Defineeri sündmus `Z2`, mis vastab tehtele $B\backslash A$. Kas `Z1` ja `Z2` langevad kokku? 
+8. Defineeri sündmus `B_taiend`, mis vastab tehtele $\bar B$.
 
 *** =hint
 Kasuta tabelis olevad funktsioonid ning argumentideks `A`, `B` või `Omega`. 
@@ -206,6 +210,11 @@ Omega
 #Sündmuste A ja B defineerimine
 A <- subset(Omega, Mast == "ärtu")
 B <- subset(Omega, Vaartus %in% 7:9)
+
+#Vektorite moodustamine:
+Omega <- paste(Omega$Mast, Omega$Vaartus)
+A <- paste(A$Mast, A$Vaartus)
+B <- paste(B$Mast, B$Vaartus)
 
 # Ülesanne 1. Sündmuste A ja B ühend:
 X <- ___________
@@ -235,6 +244,11 @@ Omega
 #Sündmuste A ja B defineerimine
 A <- subset(Omega, Mast == "ärtu")
 B <- subset(Omega, Vaartus %in% 7:9)
+
+#Vektorite moodustamine:
+Omega <- paste(Omega$Mast, Omega$Vaartus)
+A <- paste(A$Mast, A$Vaartus)
+B <- paste(B$Mast, B$Vaartus)
 
 # Ülesanne 1. Sündmuste A ja B ühend:
 X <- union(A, B)
