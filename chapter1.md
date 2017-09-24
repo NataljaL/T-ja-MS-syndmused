@@ -568,7 +568,7 @@ Sündmus *A* oli defineeritud kui kõik ärtu masti kaardid ja sündmus *B* kui 
 * Uuri, kuidas on defineeritud muutujad `A` ja `B`
 * Funktsiooni `intersect` argumentideks võivad olla vaid vektorid, seega tabelite `A` ja `B` väärtustest tuleks moodustada vektoreid. Abiks on funktsioon `paste`. Uuri!
 * Leiame sündmuste `A` ja `B` tõenäosused eraldi ning ka nende koostoimumise tõenäosuse (muutuja `AB.tn`). Funktsioon `length` leiab elementide arvu vektoris.
-* Edasi saab juba leida $P(A\caup B)$ otse valemist, vt muutujat `A.yhend.B.tn`.
+* Edasi saab juba leida $P(A\cup B)$ otse valemist, vt muutujat `A.yhend.B.tn`.
 * Analoogilise vastuse saab ka teisiti. Uuri!
 * **Ülesanne:** leida eelmises ülesandes, et tõmmatud kaart on kas musta masti (sündmus `C`) või numbritega 6, 7 (sündmus `D`). Lõplikku vastust omista muutujale `yl.tn`.
 
