@@ -195,17 +195,16 @@ Kasuta tabelis olevad funktsioonid ning argumentideks `A`, `B` või `Omega`.
 
 *** =pre_exercise_code
 ```{r}
-
-```
-
-*** =sample_code
-```{r}
 #Omega loomine
 vaartused <- c( 6, 7, 8, 9, 10, "poiss", "emand", "kuningas", "äss")
 mastid <- c("poti", "ärtu", "risti", "ruutu")
 Omega <- expand.grid(mastid, vaartused)
 colnames(Omega) = c("Mast", "Vaartus") # täpitähed nimedes võivad tekitada veateateid
-Omega
+```
+
+*** =sample_code
+```{r}
+head(Omega)
 
 #Sündmuste A ja B defineerimine
 A <- subset(Omega, Mast == "ärtu")
@@ -234,12 +233,7 @@ B_taiend <- ___________
 
 *** =solution
 ```{r}
-#Omega loomine
-vaartused <- c( 6, 7, 8, 9, 10, "poiss", "emand", "kuningas", "äss")
-mastid <- c("poti", "ärtu", "risti", "ruutu")
-Omega <- expand.grid(mastid, vaartused)
-colnames(Omega) = c("Mast", "Vaartus") # täpitähed nimedes võivad tekitada veateateid
-Omega
+head(Omega)
 
 #Sündmuste A ja B defineerimine
 A <- subset(Omega, Mast == "ärtu")
