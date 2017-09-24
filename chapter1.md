@@ -213,8 +213,8 @@ B <- subset(Omega, Vaartus %in% 7:9)
 
 #Vektorite moodustamine:
 Omega <- paste(Omega$Mast, Omega$Vaartus)
-A <- paste(A$Mast, A$Vaartus)
-B <- paste(B$Mast, B$Vaartus)
+A <- paste(A$Mast, A$Vaartus);  B <- paste(B$Mast, B$Vaartus)
+A;  B
 
 # Ülesanne 1. Sündmuste A ja B ühend:
 X <- ___________
@@ -247,8 +247,8 @@ B <- subset(Omega, Vaartus %in% 7:9)
 
 #Vektorite moodustamine:
 Omega <- paste(Omega$Mast, Omega$Vaartus)
-A <- paste(A$Mast, A$Vaartus)
-B <- paste(B$Mast, B$Vaartus)
+A <- paste(A$Mast, A$Vaartus);  B <- paste(B$Mast, B$Vaartus)
+A;  B
 
 # Ülesanne 1. Sündmuste A ja B ühend:
 X <- union(A, B)
