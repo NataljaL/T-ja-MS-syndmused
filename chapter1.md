@@ -203,8 +203,8 @@ Kasuta tabelis olevad funktsioonid ning argumentideks `A`, `B` või `Omega`.
 #Omega loomine
 vaartused <- c( 6, 7, 8, 9, 10, "Poiss", "Emand", "Kuningas", "Äss")
 mastid <- c("poti", "ärtu", "risti", "ruutu")
-Omega <- expand.grid(vaartused, mastid)
-colnames(Omega) = c("Vaartus", "Mast") # täpitähed nimedes võivad tekitada veateateid
+Omega <- expand.grid(mastid, vaartused)
+colnames(Omega) = c("Mast", "Vaartus") # täpitähed nimedes võivad tekitada veateateid
 Omega
 
 #Sündmuste A ja B defineerimine
@@ -235,10 +235,10 @@ B_taiend <- ___________
 *** =solution
 ```{r}
 #Omega loomine
-vaartused <- c( 6, 7, 8, 9, 10, "J", "Q", "K", "Ä")
+vaartused <- c( 6, 7, 8, 9, 10, "Poiss", "Emand", "Kuningas", "Äss")
 mastid <- c("poti", "ärtu", "risti", "ruutu")
-Omega <- expand.grid(vaartused, mastid)
-colnames(Omega) = c("Vaartus", "Mast") # täpitähed nimedes võivad tekitada veateateid
+Omega <- expand.grid(mastid, vaartused)
+colnames(Omega) = c("Mast", "Vaartus") # täpitähed nimedes võivad tekitada veateateid
 Omega
 
 #Sündmuste A ja B defineerimine
