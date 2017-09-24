@@ -651,7 +651,7 @@ $$P(A|B)=\frac{P(A\cap B)}{P(B)},\mbox{ kus } P(B)>0.$$
 
 **Näide.** Veeretatakse kahte täringut korraga. Kõikide elementaarsündmuste hulk on paarid $\Omega=\{(1,1), (1,2),...,(6,6)\}$. 
 
-Olgu sündmus $A=$'võrdne silmade arv mõlemal täringul' ja $B=$'silmade arvude summa on vähemalt 8'. 
+Olgu sündmus *A*='võrdne silmade arv mõlemal täringul' ja *B*='silmade arvude summa on vähemalt 8'. 
 
 Leida $P(A|B)$ (tõenäosus saada võrdne arv silmi tingmusel, et silmade arvude summa on vähemalt 8) ja $P(B|A)$ (tõenäosus saada summaks vähemalt 8 tingimusel, et mõlemal täringul on sama arv silmi). 
 
