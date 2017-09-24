@@ -692,6 +692,7 @@ points(5:6, rep(3,2), pch=1, cex=3)
 points(6, 2, pch=1, cex=3)
 
 Omega <- expand.grid(1:6, 1:6)
+colnames(Omega) <- c("X1", "X2")
 ```
 
 
