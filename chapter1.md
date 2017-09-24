@@ -633,7 +633,7 @@ C <- subset(Omega, Mast %in% c("risti", "poti"))
 D <- subset(Omega, Vaartus %in% 6:7)
 C <- paste(C$Mast, C$Vaartus)
 D <- paste(D$Mast, D$Vaartus)
-yl.tn <- ___________________
+yl.tn <- length(union(C,D))/36
 ```
 
 *** =sct
