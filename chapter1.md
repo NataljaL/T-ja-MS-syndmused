@@ -201,7 +201,7 @@ Kasuta tabelis olevad funktsioonid ning argumentideks `A`, `B` või `Omega`.
 *** =sample_code
 ```{r}
 #Omega loomine
-vaartused <- c( 6, 7, 8, 9, 10, "Poiss", "Emand", "Kuningas", "Äss")
+vaartused <- c( 6, 7, 8, 9, 10, "poiss", "emand", "kuningas", "äss")
 mastid <- c("poti", "ärtu", "risti", "ruutu")
 Omega <- expand.grid(mastid, vaartused)
 colnames(Omega) = c("Mast", "Vaartus") # täpitähed nimedes võivad tekitada veateateid
@@ -235,7 +235,7 @@ B_taiend <- ___________
 *** =solution
 ```{r}
 #Omega loomine
-vaartused <- c( 6, 7, 8, 9, 10, "Poiss", "Emand", "Kuningas", "Äss")
+vaartused <- c( 6, 7, 8, 9, 10, "poiss", "emand", "kuningas", "äss")
 mastid <- c("poti", "ärtu", "risti", "ruutu")
 Omega <- expand.grid(mastid, vaartused)
 colnames(Omega) = c("Mast", "Vaartus") # täpitähed nimedes võivad tekitada veateateid
