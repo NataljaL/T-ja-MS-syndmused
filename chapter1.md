@@ -1,6 +1,6 @@
 ---
 title       : Sündmused
-description : Mõned kasulikud käsud sündmuste defineerimiseks. Alustame! :)
+description : Mõned kasulikud käsud sündmuste defineerimiseks ja tõenäosuste arvutamiseks. Alustame! :)
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6075a680df
@@ -734,7 +734,7 @@ tn2 <- length(intersect(A,B))/length(A)  # P(B|A)
 test_object("B", undefined_msg = NULL, incorrect_msg = "Kontrolli, kas defineerisid sündmuse `B` õigesti!")
 test_object("tn1", undefined_msg = NULL, incorrect_msg = "Kontrolli, kas lugejas on `length(intersect(A,B))`?")
 test_object("tn2", undefined_msg = NULL, incorrect_msg = "Kontrolli muutujat `tn2` veel kord. Kas nimetajas on `length(A)`?")
-success_msg("Tubli! Üldiselt ongi $P(A|B)\neq P(B|A)$! ")
+success_msg("Tubli! See lisapraktikum ongi nüüd tehtud")
 ```
 
 
