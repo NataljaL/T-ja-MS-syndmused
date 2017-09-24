@@ -557,10 +557,10 @@ success_msg("Lahe! Oskad nii hästi `R`-i!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:cbf176cd0c
 ## Kahe sündmuse ühendi tõenäosus
 
-Üldiselt, kui $A$ ja $B$ on kaks suvalist sündmust, siis nende ühendi (summa) tõenäosuse leidmiseks kasutatakse järgmist valemit:
+Üldiselt, kui *A* ja *B* on kaks suvalist sündmust, siis nende ühendi (summa) tõenäosuse leidmiseks kasutatakse järgmist valemit:
 $$P(A\cup B)=P(A) + P(B) - P(A\cap B).$$
 
-Juhul, kui sündmused $A$ ja $B$ on üksteist välistavad (ei saa toimuda koos), siis $P(A\cap B)= 0$ ja $P(A\cup B)= P(A)+ P(B)$.
+Juhul, kui sündmused *A* ja *B* on üksteist välistavad (ei saa toimuda koos), siis $P(A\cap B)= 0$ ja $P(A\cup B)= P(A)+ P(B)$.
 
 Varem uurisime näidet, kus $\Omega$ koosnes 36-st kaardist, milles on neli masti ja kaardid 6, 7, 8, 9, poiss, emand, kuningas ja äss.
 Sündmus *A* oli defineeritud kui kõik ärtu masti kaardid ja sündmus *B* kui kaardid numbritega 7, 8 ja 9.
