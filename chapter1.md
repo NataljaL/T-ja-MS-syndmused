@@ -552,3 +552,94 @@ test_object("B", undefined_msg = NULL, incorrect_msg = "Muutuja B on defineeritu
 test_object("P_B", undefined_msg = NULL, incorrect_msg = "Tõenäosuse P_B väärtus pole õige.")
 
 success_msg("Lahe! Oskad nii hästi `R`-i!")
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:cbf176cd0c
+## Kahe sündmuse ühendi tõenäosus
+
+Üldiselt, kui $A$ ja $B$ on kaks suvalist sündmust, siis nende ühendi (summa) tõenäosuse leidmiseks kasutatakse järgmist valemit:
+$$P(A\cup B)=P(A) + P(B) - P(A\cap B).$$
+
+Juhul, kui sündmused $A$ ja $B$ on üksteist välistavad (ei saa toimuda koos), siis $P(A\cap B)= 0$ ja $P(A\cup B)= P(A)+ P(B)$.
+
+Varem uurisime näidet, kus $\Omega$ koosnes 36-st kaardist, milles on neli masti ja kaardid 6, 7, 8, 9, poiss, emand, kuningas ja äss.
+Sündmus *A* oli defineeritud kui kõik ärtu masti kaardid ja sündmus *B* kui kaardid numbritega 7, 8 ja 9.
+
+*** =instructions
+* Kaardipakile vastav `Omega`  on juba loodud. Vaata aknas `R Console` selle väärtuseid.
+* Uuri, kuidas on defineeritud muutujad `A` ja `B`
+* Funktsiooni `intersect` argumentideks võivad olla vaid vektorid, seega tabelite `A` ja `B` väärtustest tuleks moodustada vektoreid. Abiks on funktsioon `paste`. Uuri!
+* Leiame sündmuste `A` ja `B` tõenäosused eraldi ning ka nende koostoimumise tõenäosuse (muutuja `AB.tn`). Funktsioon `length` leiab elementide arvu vektoris.
+* Edasi saab juba leida $P(A\caup B)$ otse valemist, vt muutujat `A.yhend.B.tn`.
+* Analoogilise vastuse saab ka teisiti. Uuri!
+* **Ülesanne:** leida eelmises ülesandes, et tõmmatud kaart on kas musta masti (sündmus `C`) või numbritega 6, 7 (sündmus `D`). Lõplikku vastust omista muutujale `yl.tn`.
+
+*** =hint
+Ülesande lahendamiseks defineeri esmalt uued vajalikud sündmused ning seejärel kasuta näiteks funktsiooni `Prob(union(___ ,____))`.
+
+*** =pre_exercise_code
+```{r}
+#Omega loomine
+vaartused <- c( 6, 7, 8, 9, 10, "poiss", "emand", "kuningas", "äss")
+mastid <- c("poti", "ärtu", "risti", "ruutu")
+Omega <- expand.grid(mastid, vaartused)
+colnames(Omega) = c("Mast", "Vaartus") # täpitähed nimedes võivad tekitada veateateid
+```
+
+*** =sample_code
+```{r}
+#Sündmuste A ja B defineerimine:
+A <- subset(Omega, mastid=="ärtu")
+B <- subset(Omega, vaartused %in% c(7,8,9))
+
+#Vektorite moodustamine tabelitest:
+A <- paste(A$Mast, A$Vaartus);
+B <- paste(B$Mast, B$Vaartus)
+
+# P(A U B) leidmine valemi järgi:
+A.tn <- length(A)/36; B.tn <- length(B)/36; AB.tn <- length(intersect(A,B))/36
+A.yhend.B.tn <- A.tn + B.tn - AB.tn
+A.yhend.B.tn
+
+#Alternatiivne viis vastuse saamiseks:
+length(union(A, B))/36
+
+#Ülesanne:
+C <- 
+D <- 
+C <- paste(C$Mast, C$Vaartus)
+D <- paste(D$Mast, D$Vaartus)
+yl.tn <- ___________________
+```
+
+*** =solution
+```{r}
+#Sündmuste A ja B defineerimine:
+A <- subset(Omega, mastid=="ärtu")
+B <- subset(Omega, vaartused %in% c(7,8,9))
+
+#Vektorite moodustamine tabelitest:
+A <- paste(A$Mast, A$Vaartus);
+B <- paste(B$Mast, B$Vaartus)
+
+# P(A U B) leidmine valemi järgi:
+A.tn <- length(A)/36; B.tn <- length(B)/36; AB.tn <- length(intersect(A,B))/36
+A.yhend.B.tn <- A.tn + B.tn - AB.tn
+A.yhend.B.tn
+
+#Alternatiivne viis vastuse saamiseks:
+length(union(A, B))/36
+
+#Ülesanne:
+C <- subset(Omega, Mast %in% c("risti", "poti"))
+D <- subset(Omega, Vaartus %in% 6:7)
+C <- paste(C$Mast, C$Vaartus)
+D <- paste(D$Mast, D$Vaartus)
+yl.tn <- ___________________
+```
+
+*** =sct
+```{r}
+test_object("yl.tn", undefined_msg = NULL, incorrect_msg = "Vatus pole õige. Proovi veelkord!")
+success_msg("Suurepärane! Kasuta `R`-i ka edaspidi oma töös :) ")
+```
