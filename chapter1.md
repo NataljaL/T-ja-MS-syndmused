@@ -645,7 +645,7 @@ success_msg("Suurepärane! Kasuta `R`-i ka edaspidi oma töös :) ")
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3c0bf3ee30
 ## Tinglik tõenäosus
-Sündmuse $A$ tõenäosust tingimusel, et sündmus $B$ on toimunud nimetatakse **tinglikukus tõenäosuseks** ja leitakse järgmiselt: 
+Sündmuse *A* tõenäosust tingimusel, et sündmus *B* on toimunud nimetatakse **tinglikukus tõenäosuseks** ja leitakse järgmiselt: 
 
 $$P(A|B)=\frac{P(A\cap B)}{P(B)},\mbox{ kus } P(B)>0.$$
 
