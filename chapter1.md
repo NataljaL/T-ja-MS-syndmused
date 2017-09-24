@@ -668,7 +668,7 @@ Lahendame ka `R`- i abil.
 * Hulk $\Omega$, mis vastab kahe täringu veeretamisele, on defineeritud muutuja `Omega` abil. Uuri, millest see koosneb!
 * Sündmus `A` on defineeritud. Defineeri analoogiliselt ka sündmus `B`.
 * Leida $P(A|B)$ valemi järgi täiendades vastavat käsku funktsiooniga `intersect()`.
-* Kirjuta analoogiline käsk ka sündmuse $B|A$ tõenäosuse leidmiseks. Kas `tn1` ja `tn2` langevad kokku?
+* Kirjuta analoogiline käsk ka sündmuse $B|A$ tõenäosuse leidmiseks.
  
 *** =hint
 * Kasuta tingimust `X1 + X2 >= 8` sündmuse `B` defineerimisel.
