@@ -653,7 +653,7 @@ $$P(A|B)=\frac{P(A\cap B)}{P(B)},\mbox{ kus } P(B)>0.$$
 
 Olgu sündmus *A*='võrdne silmade arv mõlemal täringul' ja *B*='silmade arvude summa on vähemalt 8'. 
 
-Leida $P(A|B)$ (tõenäosus saada võrdne arv silmi tingmusel, et silmade arvude summa on vähemalt 8) ja $P(B|A)$ (tõenäosus saada summaks vähemalt 8 tingimusel, et mõlemal täringul on sama arv silmi). 
+Leida $P(A|B)$ (tõenäosus saada võrdne arv silmi tingmusel, et silmade arvude summa on vähemalt 8). Seejärel leida $P(B|A)$ (tõenäosus saada summaks vähemalt 8 tingimusel, et mõlemal täringul on sama arv silmi). 
 
 Joonisel on ristiga märgitud sündmusele $A$ vastavad tulemused ja ringiga need, mis vastavad sündmusele $B$. Selle abil on lihtne veenduda, et 
 
