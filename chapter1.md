@@ -180,9 +180,7 @@ Argumendid `A`, `B` ja `Omega` peavad olema vektorid.
 Koosnegu $\Omega$ 36-st kaardist, milles on neli masti ja kaardid 6, 7, 8, 9, poiss, emand, kuningas ja äss.
 Sündmus *A* on defineeritud kui kõik ärtu masti kaardid ja sündmus *B* kui kaardid numbritega 7, 8 ja 9.
 
-1. Kõigepealt defineeritakse katsetulemjuste hulk `Omega`  funktsiooni `expand.grid` abil, selle tulemuseks on tabel. Seejärel antakse veergudele nimed. Uuri!
-2. Sündmuste `A` ja `B` defineerimiseks rakendatakse käsku `subset` vastavate tingimustega ning saadakse tabelid. 
-3. Sündmuste tehete kasutamiseks luuakse tabelite baasil vektorid.
+1. Muutujad `Omega`, `A` ja `B` on juba defineeritud. Uuri neid!
 * **Ülesanded:**
 4. Defineeri sündmus `X`, mis on sündmuste *A* ja *B* ühend.
 5. Defineeri sündmus `Y`, mis on sündmuste *A* ja *B* ühisosa.
@@ -200,11 +198,7 @@ vaartused <- c( 6, 7, 8, 9, 10, "poiss", "emand", "kuningas", "äss")
 mastid <- c("poti", "ärtu", "risti", "ruutu")
 Omega <- expand.grid(mastid, vaartused)
 colnames(Omega) = c("Mast", "Vaartus") # täpitähed nimedes võivad tekitada veateateid
-```
 
-*** =sample_code
-```{r}
-head(Omega)
 
 #Sündmuste A ja B defineerimine
 A <- subset(Omega, Mast == "ärtu")
@@ -213,7 +207,13 @@ B <- subset(Omega, Vaartus %in% 7:9)
 #Vektorite moodustamine:
 Omega <- paste(Omega$Mast, Omega$Vaartus)
 A <- paste(A$Mast, A$Vaartus);  B <- paste(B$Mast, B$Vaartus)
-A;  B
+```
+
+*** =sample_code
+```{r}
+head(Omega)
+A
+B
 
 # Ülesanne 1. Sündmuste A ja B ühend:
 X <- ___________
@@ -234,15 +234,8 @@ B_taiend <- ___________
 *** =solution
 ```{r}
 head(Omega)
-
-#Sündmuste A ja B defineerimine
-A <- subset(Omega, Mast == "ärtu")
-B <- subset(Omega, Vaartus %in% 7:9)
-
-#Vektorite moodustamine:
-Omega <- paste(Omega$Mast, Omega$Vaartus)
-A <- paste(A$Mast, A$Vaartus);  B <- paste(B$Mast, B$Vaartus)
-A;  B
+A
+B
 
 # Ülesanne 1. Sündmuste A ja B ühend:
 X <- union(A, B)
