@@ -613,8 +613,8 @@ yl.tn <- ___________________
 *** =solution
 ```{r}
 #Sündmuste A ja B defineerimine:
-A <- subset(Omega, mastid=="ärtu")
-B <- subset(Omega, vaartused %in% c(7,8,9))
+A <- subset(Omega, Mast=="ärtu")
+B <- subset(Omega, Vaartus %in% c(7,8,9))
 
 #Vektorite moodustamine tabelitest:
 A <- paste(A$Mast, A$Vaartus);
